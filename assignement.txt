@@ -11,5 +11,8 @@ Chapter 10
 
 
 Chapter 11
-- 
+- severe side rendering include build up the html pages at server and posting it to browser.
+- they include adding variables into HTML pages which when rendered will be replaced by sevrer 
+- for example all variables or text that start with syntax ${} are replaced ta severe side.
+- this can be a secured way to transfer any sensitive data between browser and server  
  
