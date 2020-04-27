@@ -4,6 +4,7 @@ import Product from './inventory/Pojo.jsx'
 import AddProduct from './inventory/AddProduct.jsx'
 import { useQuery, gql, useMutation } from '@apollo/client';
 
+import { Table, Button, Container } from 'react-bootstrap';
 
 const GET_PRODUCT = gql` {
 products {
@@ -26,7 +27,7 @@ export default function Inventory(props) {
     const [refresh, setRefresh] = useState(false);
     const [addProduct] = useMutation(ADD_PRODUCT);
     const [removeProduct] = useMutation(REMOVE_PRODUCT);
-    const { loading, error, data , refetch, networkStatus} = useQuery(GET_PRODUCT,   { notifyOnNetworkStatusChange: true });
+    const { loading, error, data, refetch, networkStatus } = useQuery(GET_PRODUCT, { notifyOnNetworkStatusChange: true });
 
     function saveProduct(p) {
         // console.log(JSON.stringify(p))
@@ -53,18 +54,20 @@ export default function Inventory(props) {
     if (loading) {
         return <div>Loading still ....</div>
     } else {
-        console.log("loading "+prod)
-        return (<div>
+        console.log("loading " + prod)
+        return (
+        <Container>
+        <div>
 
             <div>
-                <h2>My Company Inventory {data.products.lenght}</h2>
+                <h2> {data.products.lenght}</h2>
             </div>
             <div>
                 <h3>Showing all available products</h3>
             </div>
             <hr />
             <div>
-                <table>
+                <Table striped bordered hover variant="dark">
                     <thead>
                         <tr>
                             <th>Index</th>
@@ -79,7 +82,7 @@ export default function Inventory(props) {
                     <tbody>
                         {data.products.map((p, i) => { return <InvRow key={i} keyId={i} data={p} remove={removeProd} /> })}
                     </tbody>
-                </table>
+                </Table>
             </div>
             <div>
                 <div>
@@ -87,13 +90,16 @@ export default function Inventory(props) {
                 </div>
                 <hr />
                 <div >
-                    <AddProduct saveProd={saveProduct} />
+                <Container fluid>
+                        <AddProduct saveProd={saveProduct} />
+                    </Container>
                 </div>
             </div>
         </div>
-    
+        </Container>
+
         );
-   
+
     }
 }
 

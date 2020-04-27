@@ -2,8 +2,11 @@ import React, { Component, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, gql, useMutation } from '@apollo/client';
 import { Link } from "react-router-dom";
+import { Container, Button, Row, Col,Alert } from 'react-bootstrap';
+
 
 import AddProduct from '../AddProduct.jsx'
+
 
 const GET_P = gql`
   query getProd($id : ID!){
@@ -27,33 +30,47 @@ export default function EditProduct(props) {
         const [refresh, setRefresh] = useState(false);
         const { loading, error, data, refetch, networkStatus } = useQuery(GET_P, { variables: { id: id } });
         const [editProduct] = useMutation(EDIT_PRODUCT);
-        
+
         console.log(JSON.stringify(data))
         // const { loading, error, data, refetch, networkStatus } = useQuery(GET_P({ variables: { _id : id} }), { notifyOnNetworkStatusChange: true });
 
         function saveProduct(p) {
 
-            console.log(editProduct({ variables: {i : id ,n: p.name, p: Number.parseFloat(p.price), f: p.image, c: p.category } }));
+            console.log(editProduct({ variables: { i: id, n: p.name, p: Number.parseFloat(p.price), f: p.image, c: p.category } }));
             if (refresh == false) {
                 setRefresh(true)
             } else {
                 setRefresh(false)
             }
-           
+
             refetch()
-            alert("completed saving "+id)
+            alert("completed saving " + id)
         };
         if (loading) {
             return <div>Loading still product data....</div>
         } else {
             return (
-                <div>
-                    <h3>Edit/Update Product ID: {id}</h3>
-                    <br/>
-                    <AddProduct saveProd={saveProduct} data={data.getProduct}/>
-                    <br/>
-                    <Link to={'/'}> <button type="submit" value="Submit">Back</button></Link>
-                </div>
+                <Container>
+                    <div>
+                        <Row>
+                            <Col md={9}>
+                                <Alert variant="warning">
+                                    <h6>Edit/Update Product ID: {id}</h6>
+                                </Alert>
+                            </Col>
+                            <Col md={1}></Col>
+
+                            <Col md={2}>
+                                <Link to={'/'}> <Button type="submit" value="Submit">Back</Button></Link>
+                            </Col>
+
+                        </Row>
+                        <br />
+                        <AddProduct saveProd={saveProduct} data={data.getProduct} />
+                        <br />
+
+                    </div>
+                </Container>
             )
         };
     } else {

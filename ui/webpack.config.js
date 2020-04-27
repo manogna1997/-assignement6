@@ -14,7 +14,7 @@ module.exports = {
         loader: 'babel-loader?cacheDirectory=true',
       }
     }, {
-      test: /\.(jpe?g|png|gif|svg|jpeg|css)$/i,
+      test: /\.(jpe?g|png|gif|svg|jpeg|css|map|min.js)$/i,
       loader: "file-loader",
       options: {
         name: '[name].[ext]',

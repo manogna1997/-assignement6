@@ -1,21 +1,15 @@
-Chapter 9
-- Chapter 9 starts of explaining about API and routes using react route,
-- React route help us handling routing at browser side
-- react routes can be embedded into your ui by adding react-router-dom
-- react route comes with different components to help us handle routing like ulp param and passing ui data between components
-- some of very helpful react route components include { BrowserRouter, Route, Switch , links}
-- we can pass data such has id in url paths and gather this information from urlparams  
-- this helps us to query data from db clients.
-
-
 Chapter 10
- - Chapter 10 starts of explaining about Forms in react using react-bootstrap, 
- - most of the form components are a combination of bootstrap and react native
- - React comes with its components of form called Form, FormControl, FormGroup
- - this component gives us boiler plate code for validation, data mapping and data conversion
- - other components help with syling , arrangement , alerts and layout
+- React-Bootstrap
+- React rhas its own way of binding with a 3rd party framework such has bootstrap with react-bootstrap module 
+- This module helps in defining and using bootstrap components has react components that can be imported in the view
+- some of the components components used are Table,Button,Containers etc
+- These bootstrap components organize our page layouts has a Grid or rows and columns.
+- Difficult parts of bootstrap 
+  - CSS properties overlap each other and some times we need to use the browner debugger to see what componets css is uner effect.
+  - A developer needs to map or learn the modules names by hard in memory 
 
- Observation 
- - passing urls in route param was very hard
- - The best way to pass data between routes is by passing the object it and gather the data from that id.
+
+
+Chapter 11
+- 
  

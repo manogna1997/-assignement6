@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Product from './Pojo.jsx'
+import { Container, Button, ButtonToolbar, Form, Row, Col } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 // https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260
 export default class AddProduct extends Component {
@@ -9,9 +11,9 @@ export default class AddProduct extends Component {
      */
     constructor(props) {
         super(props);
-        if (props.data == undefined){
+        if (props.data == undefined) {
             this.state = { newProd: new Product("", "", "Jeans", "") };
-        }else{
+        } else {
             this.state = { newProd: props.data };
         }
         this.handleChange = this.handleChange.bind(this);
@@ -45,18 +47,37 @@ export default class AddProduct extends Component {
     }
     render() {
         return (
-            <div className="flex-container">
-                <form className="reg-form" id="regform" onSubmit={(e) => this.handleSubmit(e)}>
-                    <div className="flex-container">
+
+            <Form id="regform" onSubmit={(e) => this.handleSubmit(e)}>
+                <Form.Group as={Row} controlId="exampleForm.ControlSelect1">
+                    <Form.Label column sm={2}>Category</Form.Label>
+                    {/* <Form.Control  /> */}
+                    <Col sm={10}>
+                        <Form.Control as="select" defaultValue={this.state.newProd.category} onChange={(e) => this.handleChange(e, "cat")}>
+                            <option value="Shirts">Shirts</option>
+                            <option value="Jeans">Jeans</option>
+                            <option value="Jackets">Jackets</option>
+                            <option value="Sweaters">Sweaters</option>
+                            <option value="Accessories">Accessories</option>
+                        </Form.Control>
+                    </Col>
+                </Form.Group>
+                <Form.Group as={Row} controlId="formGridAddress1">
+                    <Form.Label column sm={2}>Price Per Unit</Form.Label>
+                    <Col sm={10}>
+                        <Form.Control type="text" value={"$ " + this.state.newProd.price} onChange={(e) => this.handleChange(e, "price")} />
+                    </Col>
+                </Form.Group>
+                {/* <Container>
                         <div className="flex-row-3">
-                            <label >Category<span className="error"></span></label>
+                            <Form.Label >Category<span className="error"></span></Form.Label>
                         </div>
                         <div className="flex-row-3">
-                            <label>Price Per Unit<span className="error"></span></label>
+                            <Form.Label>Price Per Unit<span className="error"></span></Form.Label>
                         </div>
-                    </div>
-                    <div className="flex-container">
-                        {/* <input type="text" list="eventslist"   required /> */}
+                    </Container>
+                    <Container>
+      
                         <select id="eventslist" defaultValue={this.state.newProd.category} onChange={(e) => this.handleChange(e, "cat")}>
                             <option value="Shirts">Shirts</option>
                             <option value="Jeans">Jeans</option>
@@ -65,8 +86,21 @@ export default class AddProduct extends Component {
                             <option value="Accessories">Accessories</option>
                         </select>
                         <input id="12years" type="text" value={"$ " + this.state.newProd.price} onChange={(e) => this.handleChange(e, "price")} />
-                    </div>
-                    <div className="flex-container">
+                    </Container> */}
+
+                <Form.Group as={Row} controlId="formGridAddress1">
+                    <Form.Label column sm={2} >Product Name</Form.Label>
+                    <Col sm={10}>
+                        <Form.Control typeof="text" value={this.state.newProd.name} onChange={(e) => this.handleChange(e, "name")} />
+                    </Col>
+                </Form.Group>
+
+                <Form.Group controlId="for">
+                    <Form.Label>Image URL</Form.Label>
+                    <Form.Control typeof="text" value={this.state.newProd.image} onChange={(e) => this.handleChange(e, "image")} />
+                </Form.Group>
+
+                {/* <Container>
                         <div className="flex-row-5">
                             <label >Product Name<span className="error"></span></label>
                         </div>
@@ -75,16 +109,23 @@ export default class AddProduct extends Component {
                         <div className="flex-row-5">
                             <label>Image URL<span className="error"></span></label>
                         </div>
-                    </div>
-                    <div className="flex-container">
+                    </Container>
+                    <Container>
                         <input typeof="text" value={this.state.newProd.name} onChange={(e) => this.handleChange(e, "name")} />
                         <input typeof="text" value={this.state.newProd.image} onChange={(e) => this.handleChange(e, "image")} />
-                    </div>
-                    <div className="align-center">
-                        <button type="submit" form="regform" value="Submit">Add Product</button>
-                    </div>
-                </form>
-            </div>
+                    </Container> */}
+                {/* <Container> */}
+                <Row>
+                    <Col md={5}></Col>
+                    <Col md={2}>
+                        <Link to={'/'}>        <Button type="submit" form="regform" value="Submit">Add Product</Button></Link>
+                    </Col>
+                    <Col md={5}></Col>
+                </Row>
+
+                {/* </Container> */}
+            </Form>
+
         );
     }
 }

@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, gql, useMutation } from '@apollo/client';
 
+
 const GET_P = gql`
   query getProd($id : ID!){
     getProduct (id: $id){
