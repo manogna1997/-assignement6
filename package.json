@@ -1,5 +1,5 @@
 {
-  "name": "assignement5",
+  "name": "assignement6",
   "version": "1.0.0",
   "description": "SDSU - CS 648 Assignment 5",
   "main": "webpack.config.js",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/manogna1997/assignement5.git"
+    "url": "git+https://github.com/manogna1997/assignement6.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/manogna1997/assignement5/issues"
+    "url": "https://github.com/manogna1997/assignement6/issues"
   },
-  "homepage": "https://github.com/manogna1997/assignement5#readme",
+  "homepage": "https://github.com/manogna1997/assignement6#readme",
   "dependencies": {
     "babel-node": "0.0.1-security",
     "http-server": "^0.12.1",
